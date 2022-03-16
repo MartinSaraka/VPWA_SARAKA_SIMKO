@@ -1,49 +1,41 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
-  </q-page>
+  <div class="q-pa-md row justify-center">
+    <div style="width: 100%; max-width: 400px">
+      <q-chat-message
+        name="me"
+        avatar="https://cdn.quasar.dev/img/avatar3.jpg"
+        stamp="7 minutes ago"
+        sent
+        text-color="white"
+        bg-color="primary"
+      >
+        <div>
+          Hey there!
+        </div>
+
+        <div>
+          Have you seen Quasar?
+        </div>
+      </q-chat-message>
+
+      <q-chat-message
+        name="Jane"
+        avatar="https://cdn.quasar.dev/img/avatar5.jpg"
+        bg-color="amber"
+      >
+        <q-spinner-dots size="2rem" />
+      </q-chat-message>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { ExampleComponent },
   data() {
-    const todos: Todo[] = [
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ];
-    const meta: Meta = {
-      totalCount: 1200
-    };
-    return { todos, meta };
+    return
   }
 });
 </script>
