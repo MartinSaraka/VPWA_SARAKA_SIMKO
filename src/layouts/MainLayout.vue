@@ -1,40 +1,40 @@
 <template>
-  <q-layout view="hHh LpR lFr">
+  <q-layout view="lHh LpR lFr">
 
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title class="text-center">
-          VPWA app
+          General
         </q-toolbar-title>
-
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+        
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-scroll-area class="fit">
           <q-list>
-
-            <template v-for="(menuItem, index) in menuList" :key="index">
-              <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple>
-                <q-item-section avatar>
-                  <q-icon :name="menuItem.icon" />
-                </q-item-section>
+              <q-item class="text-center">
                 <q-item-section>
-                  {{ menuItem.label }}
+                  Channells
                 </q-item-section>
               </q-item>
-              <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
+              <q-separator color="black" inset />
+
+            <template v-for="(channell, index) in channells" :key="index">
+              <q-item clickable :active="channell.name === 'General'" v-ripple>
+                <q-item-section avatar>
+                  <q-icon :name="channell.icon" />
+                </q-item-section>
+                <q-item-section>
+                  {{ channell.name }}
+                </q-item-section>
+              </q-item>
             </template>
 
           </q-list>
         </q-scroll-area>
-    </q-drawer>
-
-    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
-      <!-- drawer content -->
     </q-drawer>
 
     <q-page-container>
@@ -55,43 +55,79 @@
 <script>
 import { ref } from 'vue'
 
-const menuList = [
+const channells = [
   {
-    icon: 'inbox',
-    label: 'Inbox',
-    separator: true
+    icon: 'tag',
+    name: 'General',
   },
   {
-    icon: 'send',
-    label: 'Outbox',
-    separator: false
+    icon: 'tag',
+    name: 'VPWA channell',
   },
   {
-    icon: 'delete',
-    label: 'Trash',
-    separator: false
+    icon: 'tag',
+    name: 'PAS channell',
   },
   {
-    icon: 'error',
-    label: 'Spam',
-    separator: true
+    icon: 'tag',
+    name: 'test channell',
   },
   {
-    icon: 'settings',
-    label: 'Settings',
-    separator: false
+    icon: 'tag',
+    name: 'test channell',
   },
   {
-    icon: 'feedback',
-    label: 'Send Feedback',
-    separator: false
+    icon: 'tag',
+    name: 'test channell',
   },
   {
-    icon: 'help',
-    iconColor: 'primary',
-    label: 'Help',
-    separator: false
-  }
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'PAS channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
+  {
+    icon: 'tag',
+    name: 'test channell',
+  },
 ]
 
 export default {
@@ -99,18 +135,12 @@ export default {
   
   setup () {
     const leftDrawerOpen = ref(false)
-    const rightDrawerOpen = ref(false)
 
     return {
-      menuList,
+      channells,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      },
-
-      rightDrawerOpen,
-      toggleRightDrawer () {
-        rightDrawerOpen.value = !rightDrawerOpen.value
       }
     }
   }
