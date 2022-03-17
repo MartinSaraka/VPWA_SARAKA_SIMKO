@@ -8,18 +8,17 @@
         <q-toolbar-title class="text-center">
           General
         </q-toolbar-title>
-        
 
-        <q-item clickable v-ripple @click="profile = true"> 
-          <q-item-section side>
+        <q-btn size="md" push color="white" text-color="primary" label="Notifications">
+          <q-badge color="orange" floating>22</q-badge>
+        </q-btn>
+
+        <q-item class="q-pa-sm q-ml-sm" clickable v-ripple @click="profile = true"> 
+          <q-item-section>
             <q-avatar rounded size="48px">
               <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
               <q-badge floating rounded color="green" />
             </q-avatar>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Jakub</q-item-label>
-            <q-item-label caption>2 new messages</q-item-label>
           </q-item-section>
         </q-item>
       </q-toolbar>
@@ -30,18 +29,18 @@
           <q-list>
               <q-item class="text-center">
                 <q-item-section>
-                  Channells
+                  Channels
                 </q-item-section>
               </q-item>
               <q-separator color="black" inset />
 
-            <template v-for="(channell, index) in channells" :key="index">
-              <q-item clickable :active="channell.name === 'General'" v-ripple>
+            <template v-for="(channel, index) in channels" :key="index">
+              <q-item clickable :active="channel.name === 'General'" v-ripple>
                 <q-item-section avatar>
-                  <q-icon :name="channell.icon" />
+                  <q-icon :name="channel.icon" />
                 </q-item-section>
                 <q-item-section>
-                  {{ channell.name }}
+                  {{ channel.name }}
                 </q-item-section>
               </q-item>
             </template>
@@ -134,78 +133,78 @@
 <script>
 import { ref } from 'vue'
 
-const channells = [
+const channels = [
   {
     icon: 'tag',
     name: 'General',
   },
   {
     icon: 'tag',
-    name: 'VPWA channell',
+    name: 'VPWA channel',
   },
   {
     icon: 'tag',
-    name: 'PAS channell',
+    name: 'PAS channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'PAS channell',
+    name: 'PAS channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
   {
     icon: 'tag',
-    name: 'test channell',
+    name: 'test channel',
   },
 ]
 
@@ -217,7 +216,7 @@ export default {
     return {
       model: ref('three'),
       profile,
-      channells,
+      channels,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
