@@ -25,11 +25,11 @@ export default defineComponent({
         const dateTime = date + ' at ' + time;
 
         this.$store.commit('message/addMessage', {
-          isSender: true,
           messagerName: 'Jakub',
           avatar: 'https://cdn.quasar.dev/img/avatar1.jpg',
           text: this.inputText,
-          stamp: dateTime
+          stamp: dateTime,
+          isSender: true
         })
 
         this.inputText = ''

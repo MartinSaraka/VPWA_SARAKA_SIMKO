@@ -1,7 +1,7 @@
 <template>
 
-  <div class="q-pa-md row justify-center">
-    <div style="width: 100%;">
+  <div class="q-pa-md q-mt-sm row justify-center">
+    <div style="width: 95%;">
         <message-component
           v-for="(message, index) in messages" :key="index"
             :isSender="message.isSender"

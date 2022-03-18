@@ -33,14 +33,14 @@ export default defineComponent({
 </script>
 
 <template>
-    <q-chat-message
-        :sent=isSender
-        text-color="white"
+  <q-chat-message
+    class="q-mt-md"
+    text-color="black"
 
-        :name="messagerName"
-        :avatar="avatar"
-        :text="[text]"
-        :stamp="stamp"
-    >
-    </q-chat-message>
+    :name="messagerName"
+    :avatar="avatar"
+    :text="[text]"
+    :stamp="stamp"
+    :sent=isSender
+  />
 </template>

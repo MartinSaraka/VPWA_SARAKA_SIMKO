@@ -26,6 +26,13 @@ function state(): MessageStateInterface {
         avatar: 'https://cdn.quasar.dev/img/avatar4.jpg',
         text: 'čau',
         stamp: '18.3.2022 at 12:30'
+      },
+      {
+        isSender: true,
+        messagerName: 'Jakub',
+        avatar: 'https://cdn.quasar.dev/img/avatar1.jpg',
+        text: 'test 12345',
+        stamp: '2 minutes ago'
       }
     ]
   };
