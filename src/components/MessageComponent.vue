@@ -1,19 +1,35 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
-  data() {
-    return {
-
-    }
-  },
+export default defineComponent({
+  name: 'MessageComponent',
   props: {
-    messagerName: String,
-    message: String,
-    stamp: String,
-    avatar: String,
-    isSender: Boolean
+    messagerName: {
+      type: String,
+      required: true
+    },
+
+    text: {
+      type: String,
+      required: true
+    },
+
+    stamp: {
+      type: String,
+      required: true
+    },
+
+    avatar: {
+      type: String,
+      required: true
+    },
+
+    isSender:{
+      type: Boolean,
+      required: true
+    }
   }
-}
+})
 </script>
 
 <template>
@@ -23,7 +39,7 @@ export default {
 
         :name="messagerName"
         :avatar="avatar"
-        :text="[message]"
+        :text="[text]"
         :stamp="stamp"
     >
     </q-chat-message>

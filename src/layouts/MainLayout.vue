@@ -120,11 +120,9 @@
     </q-dialog>
 
       <q-footer>
-          <q-input standout="bg-teal text-white" v-model="message" placeholder="Type a message">
-            <template v-slot:append>
-              <q-btn round dense flat icon="send" />
-            </template>
-          </q-input>
+        <MessageInputField>
+          
+        </MessageInputField>
       </q-footer>
   </q-layout>
 
@@ -132,6 +130,7 @@
 
 <script>
 import { ref } from 'vue'
+import MessageInputField from '../components/MessageInputField.vue'
 
 const channels = [
   {
@@ -209,19 +208,19 @@ const channels = [
 ]
 
 export default {
-  setup () {
-    const leftDrawerOpen = ref(false)
-    const profile = ref(false)
-
-    return {
-      model: ref('three'),
-      profile,
-      channels,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
+    setup() {
+        const leftDrawerOpen = ref(false);
+        const profile = ref(false);
+        return {
+            model: ref('three'),
+            profile,
+            channels,
+            leftDrawerOpen,
+            toggleLeftDrawer() {
+                leftDrawerOpen.value = !leftDrawerOpen.value;
+            }
+        };
+    },
+    components: { MessageInputField }
 }
 </script>

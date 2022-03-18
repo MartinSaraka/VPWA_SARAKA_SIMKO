@@ -6,6 +6,9 @@ import {
   useStore as vuexUseStore,
 } from 'vuex'
 
+import message from './message'
+import { MessageStateInterface } from './message/state'
+
 // import example from './module-example'
 // import { ExampleStateInterface } from './module-example/state';
 
@@ -23,6 +26,7 @@ export interface StateInterface {
   // example: ExampleStateInterface;
   // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
   example: unknown
+  message: MessageStateInterface
 }
 
 // provide typings for `this.$store`
@@ -39,6 +43,7 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore<StateInterface>({
     modules: {
       // example
+      message,
     },
 
     // enable strict mode (adds overhead!)
