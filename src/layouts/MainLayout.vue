@@ -1,19 +1,51 @@
 <template>
   <q-layout view="lHh LpR lFr">
-
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title class="text-center">
-          General
-        </q-toolbar-title>
+        <q-toolbar-title class="text-center"> General </q-toolbar-title>
 
-        <q-btn size="md" push color="white" text-color="primary" label="Notifications">
-          <q-badge color="orange" floating>22</q-badge>
-        </q-btn>
+        <div class="q-pa-md">
+          <q-btn-dropdown
+            color="pink"
+            label="Notificiations(+3)"
+            dropdown-icon="change_history"
+          >
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick">
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message(aaaa....) 2 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
 
-        <q-item class="q-pa-sm q-ml-sm" clickable v-ripple @click="profile = true"> 
+              <q-item clickable v-close-popup @click="onItemClick">
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message(aaaa....) 2 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-close-popup @click="onItemClick">
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message(aaaa....) 2 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </div>
+
+        <q-item
+          class="q-pa-sm q-ml-sm"
+          clickable
+          v-ripple
+          @click="profile = true"
+        >
           <q-item-section>
             <q-avatar rounded size="48px">
               <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
@@ -26,15 +58,14 @@
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-scroll-area class="fit">
-          <q-list>
-              <q-item class="text-center">
-                <q-item-section>
-                  Channels
-                </q-item-section>
-              </q-item>
-              <q-separator color="black" inset />
+        <q-list>
+          <q-item class="text-center">
+            <q-item-section> Channels </q-item-section>
+          </q-item>
+          <q-separator color="black" inset />
 
-            <template v-for="(channel, index) in channels" :key="index">
+          <template v-for="(channel, index) in channels" :key="index">
+            <q-tabs v-model="tab">
               <q-item clickable :active="channel.name === 'General'" v-ripple>
                 <q-item-section avatar>
                   <q-icon :name="channel.icon" />
@@ -43,10 +74,10 @@
                   {{ channel.name }}
                 </q-item-section>
               </q-item>
-            </template>
-
-          </q-list>
-        </q-scroll-area>
+            </q-tabs>
+          </template>
+        </q-list>
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -54,23 +85,23 @@
     </q-page-container>
 
     <q-dialog v-model="profile">
-      <q-card style="width: 700px; max-width: 80vw;">
+      <q-card style="width: 700px; max-width: 80vw">
         <q-card-actions align="right" class="q-mb-none">
           <q-btn dense flat icon="close" v-close-popup>
             <q-tooltip>Close</q-tooltip>
           </q-btn>
         </q-card-actions>
-        
+
         <q-card-section align="center">
           <q-avatar rounded size="15vh">
-              <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
+            <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
           </q-avatar>
           <div class="text-h6 ellipsis q-mt-sm">Jakub</div>
         </q-card-section>
 
-        <q-separator inset/>
+        <q-separator inset />
 
-  <!--
+        <!--
 
         <q-card-section>
           <div class="text-h6 text-center">Nastavenie stavov</div>
@@ -83,35 +114,33 @@
             push
             toggle-color="primary"
             :options="[
-              {value: 'one', slot: 'one'},
-              {value: 'two', slot: 'two'},
-              {value: 'three', slot: 'three'}
+              { value: 'one', slot: 'one' },
+              { value: 'two', slot: 'two' },
+              { value: 'three', slot: 'three' },
             ]"
           >
-            <template v-slot:one >
+            <template v-slot:one>
               <div class="row items-center no-wrap">
-                <q-icon left name="circle" color="green"/>
-                <div class="text-center">
-                  Online
-                </div>
+                <q-icon left name="circle" color="green" />
+                <div class="text-center">Online</div>
               </div>
             </template>
 
             <template v-slot:two>
               <div class="row items-center no-wrap">
-                <q-icon left name="do_not_disturb_on_total_silence" color="yellow-10"/>
-                <div class="text-center">
-                  Do not disturb
-                </div>
+                <q-icon
+                  left
+                  name="do_not_disturb_on_total_silence"
+                  color="yellow-10"
+                />
+                <div class="text-center">Do not disturb</div>
               </div>
             </template>
 
             <template v-slot:three>
               <div class="row items-center no-wrap">
                 <q-icon left name="circle" color="grey-6" />
-                <div class="text-center">
-                  Offline
-                </div>
+                <div class="text-center">Offline</div>
               </div>
             </template>
           </q-btn-toggle>
@@ -119,18 +148,15 @@
       </q-card>
     </q-dialog>
 
-      <q-footer>
-        <MessageInputField>
-          
-        </MessageInputField>
-      </q-footer>
+    <q-footer>
+      <MessageInputField> </MessageInputField>
+    </q-footer>
   </q-layout>
-
 </template>
 
 <script>
-import { ref } from 'vue'
-import MessageInputField from '../components/MessageInputField.vue'
+import { ref } from 'vue';
+import MessageInputField from '../components/MessageInputField.vue';
 
 const channels = [
   {
@@ -205,22 +231,22 @@ const channels = [
     icon: 'tag',
     name: 'test channel',
   },
-]
+];
 
 export default {
-    setup() {
-        const leftDrawerOpen = ref(false);
-        const profile = ref(false);
-        return {
-            model: ref('three'),
-            profile,
-            channels,
-            leftDrawerOpen,
-            toggleLeftDrawer() {
-                leftDrawerOpen.value = !leftDrawerOpen.value;
-            }
-        };
-    },
-    components: { MessageInputField }
-}
+  setup() {
+    const leftDrawerOpen = ref(false);
+    const profile = ref(false);
+    return {
+      model: ref('three'),
+      profile,
+      channels,
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+  components: { MessageInputField },
+};
 </script>
