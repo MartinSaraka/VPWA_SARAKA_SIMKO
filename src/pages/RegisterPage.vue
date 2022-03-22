@@ -1,8 +1,8 @@
 <template>
-  <img src="~assets/wave.png" class="wave" alt="login-wave" />
+  <img src="~assets/wave.png" class="wave" alt="register-wave" />
   <div class="row" style="height: 90vh">
     <div class="col-0 col-md-6 flex justify-center content-center">
-      <img src="~assets/Chat_SVG.svg" class="responsive" alt="login-image" />
+      <img src="~assets/Chat_SVG.svg" class="responsive" alt="register-image" />
     </div>
     <div
       v-bind:class="{
@@ -30,23 +30,26 @@
         </q-card-section>
         <q-card-section>
           <q-form class="q-gutter-md" @submit.prevent="submitForm">
-            <q-input label="Username" v-model="login.username"> </q-input>
-            <q-input label="Password" type="password" v-model="login.password">
+            <q-input label="Username" v-model="register.username"> </q-input>
+            <q-input label="Email" type="Email" v-model="register.email">
+            </q-input>
+            <q-input
+              label="Password"
+              type="password"
+              v-model="register.password"
+            >
             </q-input>
             <div>
               <q-btn
                 class="full-width"
                 color="primary"
-                label="Login"
+                label="register"
                 type="submit"
                 rounded
               ></q-btn>
               <div class="text-center q-mt-sm q-gutter-lg">
                 <router-link class="text-black" to="/login"
-                  >Forgot password ?</router-link
-                >
-                <router-link class="text-black" to="/register"
-                  >Create account</router-link
+                  >Already registered ?</router-link
                 >
               </div>
             </div>
@@ -61,18 +64,23 @@
 import { useQuasar } from 'quasar';
 let $q;
 export default {
-  name: 'loginPage',
+  name: 'RegisterPage',
   data() {
     return {
-      login: {
+      register: {
         username: '',
+        email: '',
         password: '',
       },
     };
   },
   methods: {
     submitForm() {
-      if (!this.login.username || !this.login.password) {
+      if (
+        !this.register.username ||
+        !this.register.password ||
+        !this.register.email
+      ) {
         $q.notify({
           type: 'negative',
           message: 'Bad login',
@@ -83,7 +91,7 @@ export default {
           message: 'Password need to have at least 6 characters',
         });
       } else {
-        console.log('login');
+        console.log('register');
       }
     },
   },
