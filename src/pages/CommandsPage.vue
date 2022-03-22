@@ -26,15 +26,15 @@ interface Command {
 }
 
 const commands: Command[] = [
-    { command: '/join channelName [private]', description: 'Príkaz na vytvorenie súkromného komunikačného kanála'},
-    { command: '/join channelName', description: 'Príkaz na vytvorenie alebo pridanie sa do verejného komunikačného kanála'},
-    { command: '/invite nickName', description: 'Príkaz na pozvanie používateľa do komunikačného kanála'},
-    { command: '/revoke nickName', description: 'Príkaz na vyhodenie používateľa zo súkromného komunikačného kanála'},
-    { command: '/kick nickName', description: 'Príkaz na vyyhodenie používateľa z verejného komunikačného kanála'},
-    { command: '/quit', description: 'Príkaz na zrušenie komunikačný kanál'},
-    { command: '/cancel', description: 'Príkaz na opustenie komunikačného kanála'},
-    { command: '/list', description: 'Príkaz na zobrazenie zoznamu členov kanála'},
-    { command: '@nickName', description: 'Príkaz na adresovanie správy konkrétnemu používateľovi'},
+    { command: '/join channelName [private]', description: 'Create a private communication channel'},
+    { command: '/join channelName', description: 'Create or join a public communication channel'},
+    { command: '/invite nickName', description: 'Invite the user to the communication channel'},
+    { command: '/revoke nickName', description: 'Expel a user from a private communication channel'},
+    { command: '/kick nickName', description: 'Expel a user from a public communication channel'},
+    { command: '/quit', description: 'Cancel the communication channel'},
+    { command: '/cancel', description: 'Leave the communication channel'},
+    { command: '/list', description: 'Display the list of channel members'},
+    { command: '@nickName', description: 'Command to address a message to a specific user'},
 ]
 
 export default defineComponent({
