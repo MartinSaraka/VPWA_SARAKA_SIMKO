@@ -83,7 +83,11 @@ export default {
           message: 'Password need to have at least 6 characters',
         });
       } else {
-        console.log('login');
+        $q.notify({
+          icon: 'done',
+          color: 'positive',
+          message: 'Submitted',
+        });
       }
     },
   },
