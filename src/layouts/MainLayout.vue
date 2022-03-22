@@ -4,11 +4,11 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title class="text-center" v-if="channels[$route.params.id]"> 
-          {{channels[$route.params.id].name}} 
+        <q-toolbar-title class="text-center" v-if="channels[$route.params.id]">
+          {{ channels[$route.params.id].name }}
         </q-toolbar-title>
 
-        <q-toolbar-title class="text-center" v-else> 
+        <q-toolbar-title class="text-center" v-else>
           Zoznam príkazov
         </q-toolbar-title>
 
@@ -71,27 +71,27 @@
           <q-separator color="black" inset />
 
           <template v-for="(channel, index) in channels" :key="index">
-              <q-item 
-                clickable 
-                v-ripple
-                :to="{ name: 'Channel', params: { id: index } }"
-                :active="channel.name === link" 
-                @click="link = channel.name"
-              >
-                <q-item-section avatar>
-                  <q-icon :name="channel.icon" />
-                </q-item-section>
-                <q-item-section>
-                  {{ channel.name }}
-                </q-item-section>
-              </q-item>
+            <q-item
+              clickable
+              v-ripple
+              :to="{ name: 'Channel', params: { id: index } }"
+              :active="channel.name === link"
+              @click="link = channel.name"
+            >
+              <q-item-section avatar>
+                <q-icon :name="channel.icon" />
+              </q-item-section>
+              <q-item-section>
+                {{ channel.name }}
+              </q-item-section>
+            </q-item>
           </template>
         </q-list>
       </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
-      <router-view/>
+      <router-view />
     </q-page-container>
 
     <q-dialog v-model="profile">
@@ -148,6 +148,9 @@
             </template>
           </q-btn-toggle>
         </q-card-section>
+        <q-card-section align="center"
+          ><q-btn color="primary" label="Logout"
+        /></q-card-section>
       </q-card>
     </q-dialog>
 
@@ -232,7 +235,7 @@ const channels = [
   },
 ];
 
-export default {  
+export default {
   setup() {
     const leftDrawerOpen = ref(false);
     const profile = ref(false);

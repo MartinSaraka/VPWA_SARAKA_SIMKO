@@ -24,7 +24,7 @@
               <h2 class="text-h2 text-uppercase q-my-none text-weight-regular">
                 ICA
               </h2>
-              <h5>Inovative Communication App</h5>
+              <h5>Innovative Communication App</h5>
             </div>
           </div>
         </q-card-section>
