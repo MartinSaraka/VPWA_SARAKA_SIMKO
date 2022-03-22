@@ -4,7 +4,13 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title class="text-center"> General </q-toolbar-title>
+        <q-toolbar-title class="text-center" v-if="channels[$route.params.id]"> 
+          {{channels[$route.params.id].name}} 
+        </q-toolbar-title>
+
+        <q-toolbar-title class="text-center" v-else> 
+          Zoznam príkazov
+        </q-toolbar-title>
 
         <div class="q-pa-md">
           <q-btn-dropdown
@@ -65,8 +71,13 @@
           <q-separator color="black" inset />
 
           <template v-for="(channel, index) in channels" :key="index">
-            <q-tabs v-model="tab">
-              <q-item clickable :active="channel.name === 'General'" v-ripple>
+              <q-item 
+                clickable 
+                v-ripple
+                :to="{ name: 'Channel', params: { id: index } }"
+                :active="channel.name === link" 
+                @click="link = channel.name"
+              >
                 <q-item-section avatar>
                   <q-icon :name="channel.icon" />
                 </q-item-section>
@@ -74,14 +85,13 @@
                   {{ channel.name }}
                 </q-item-section>
               </q-item>
-            </q-tabs>
           </template>
         </q-list>
       </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view/>
     </q-page-container>
 
     <q-dialog v-model="profile">
@@ -101,16 +111,9 @@
 
         <q-separator inset />
 
-        <!--
-
-        <q-card-section>
-          <div class="text-h6 text-center">Nastavenie stavov</div>
-        </q-card-section>
-  -->
-
         <q-card-section align="center">
           <q-btn-toggle
-            v-model="model"
+            v-model="state_pick"
             push
             toggle-color="primary"
             :options="[
@@ -173,72 +176,72 @@ const channels = [
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 1',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 2',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 3',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 4',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 5',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 6',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 7',
   },
   {
     icon: 'tag',
-    name: 'PAS channel',
+    name: 'test channel 8',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 9',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 10',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 11',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 12',
   },
   {
     icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 13',
   },
   {
     icon: 'tag',
-    name: 'test channel',
-  },
-  {
-    icon: 'tag',
-    name: 'test channel',
+    name: 'test channel 14',
   },
 ];
 
-export default {
+export default {  
   setup() {
     const leftDrawerOpen = ref(false);
     const profile = ref(false);
+    const state_pick = ref('three');
+    const link = ref('');
+
     return {
-      model: ref('three'),
+      state_pick,
+      link,
       profile,
       channels,
       leftDrawerOpen,
