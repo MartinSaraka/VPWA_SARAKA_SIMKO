@@ -12,60 +12,89 @@
           Zoznam príkazov
         </q-toolbar-title>
 
-        <div class="q-pa-md">
-          <q-btn-dropdown
-            color="blue "
-            label="Notificiations(+3)"
-            dropdown-icon="change_history"
-          >
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message(aaaa....) 2 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message(aaaa....) 2 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message(aaaa....) 2 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
-        </div>
-
-        <q-item
-          class="q-pa-sm q-ml-sm"
-          clickable
-          v-ripple
-          @click="profile = true"
+        <q-btn-dropdown 
+          class="q-mr-xl"
+          color="blue "
+          label="Notificiations(+3)"
+          dropdown-icon="change_history"
         >
-          <q-item-section>
-            <q-avatar rounded size="48px">
-              <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
-              <q-badge floating rounded color="green" />
-            </q-avatar>
-          </q-item-section>
-        </q-item>
+          <q-list>
+            <q-item clickable v-close-popup @click="onItemClick">
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message(aaaa....) 2 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup @click="onItemClick">
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message(aaaa....) 2 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup @click="onItemClick">
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message(aaaa....) 2 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
  
         <q-btn round color="white" text-color="primary" icon="group" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-scroll-area class="fit">
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left">
+      <q-img class="absolute-top bg-blue" src="https://cdn.quasar.dev/img/material.png" style="height: 200px">
+        <div class="absolute-top bg-transparent column items-center">
+          <div class="column items-center">
+            <q-avatar rounded size="48px">
+              <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
+              <q-badge v-if="state_pick === 'online'" floating rounded color="green" />
+              <q-badge v-if="state_pick === 'dnd'" floating rounded color="yellow-10" />
+              <q-badge v-if="state_pick === 'offline'" floating rounded color="grey-6" />
+
+            </q-avatar>
+            <div class="text-h6 ellipsis">Jakub</div>
+          </div>
+
+          <q-list class="column items-center">
+            <q-item>
+                <q-btn-toggle
+                  v-model="state_pick"
+                  push
+                  glossy
+                  color="white"
+                  text-color="primary"
+
+                  toggle-color="primary"
+                  toggle-text-color="white"
+                  :options="[
+                    {label: 'Online', value: 'online'},
+                    {label: 'DND', value: 'dnd'},
+                    {label: 'Offline', value: 'offline'}
+                  ]"
+                />
+            </q-item>
+
+            <q-item>
+              <q-btn color="white" text-color="primary" label="Logout"/>
+            </q-item>
+            
+            <q-item>
+            </q-item>
+          </q-list>
+
+        </div>
+
+        
+      </q-img>
+      <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
         <q-list>
           <q-item class="text-center">
             <q-item-section> Channels </q-item-section>
@@ -168,67 +197,6 @@
       <router-view />
     </q-page-container>
 
-    <q-dialog v-model="profile">
-      <q-card style="width: 700px; max-width: 80vw">
-        <q-card-actions align="right" class="q-mb-none">
-          <q-btn dense flat icon="close" v-close-popup>
-            <q-tooltip>Close</q-tooltip>
-          </q-btn>
-        </q-card-actions>
-
-        <q-card-section align="center">
-          <q-avatar rounded size="15vh">
-            <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
-          </q-avatar>
-          <div class="text-h6 ellipsis q-mt-sm">Jakub</div>
-        </q-card-section>
-
-        <q-separator inset />
-
-        <q-card-section align="center">
-          <q-btn-toggle
-            v-model="state_pick"
-            push
-            toggle-color="primary"
-            :options="[
-              { value: 'one', slot: 'one' },
-              { value: 'two', slot: 'two' },
-              { value: 'three', slot: 'three' },
-            ]"
-          >
-            <template v-slot:one>
-              <div class="row items-center no-wrap">
-                <q-icon left name="circle" color="green" />
-                <div class="text-center">Online</div>
-              </div>
-            </template>
-
-            <template v-slot:two>
-              <div class="row items-center no-wrap">
-                <q-icon
-                  left
-                  name="do_not_disturb_on_total_silence"
-                  color="yellow-10"
-                />
-                <div class="text-center">Do not disturb</div>
-              </div>
-            </template>
-
-            <template v-slot:three>
-              <div class="row items-center no-wrap">
-                <q-icon left name="circle" color="grey-6" />
-                <div class="text-center">Offline</div>
-              </div>
-            </template>
-          </q-btn-toggle>
-        </q-card-section>
-        <q-separator></q-separator>
-        <q-card-section align="center"
-          ><q-btn color="primary" label="Logout"
-        /></q-card-section>
-      </q-card>
-    </q-dialog>
-
     <q-footer>
       <MessageInputField> </MessageInputField>
     </q-footer>
@@ -314,14 +282,12 @@ export default {
   setup() {
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
-    const profile = ref(false);
-    const state_pick = ref('three');
+    const state_pick = ref('online');
     const link = ref('');
 
     return {
       state_pick,
       link,
-      profile,
       channels,
 
       leftDrawerOpen,
