@@ -12,39 +12,14 @@
           Zoznam príkazov
         </q-toolbar-title>
 
-        <q-btn-dropdown
+
+        <q-btn 
           class="q-mr-xl"
           color="blue "
-          label="Notificiations(+3)"
-          dropdown-icon="change_history"
-        >
-          <q-list>
-            <q-item clickable v-close-popup @click="onItemClick">
-              <q-item-section>
-                <q-item-label
-                  >Majka sent u message(aaaa....) 2 mins ago</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="onItemClick">
-              <q-item-section>
-                <q-item-label
-                  >Majka sent u message(aaaa....) 2 mins ago</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="onItemClick">
-              <q-item-section>
-                <q-item-label
-                  >Majka sent u message(aaaa....) 2 mins ago</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-
+          label="Notificiations (+3)" 
+          icon="mail" 
+          @click="notificationsDialog = true"
+        />
         <q-btn
           round
           color="white"
@@ -269,7 +244,7 @@
     </q-footer>
 
     <q-dialog v-model="notificationsDialog">
-        <q-card style="width: 700px; max-width: 80vw">
+        <q-card style="width: 700px; max-width: 80vw;">
           <q-card-actions align="right" class="q-mb-none">
             <q-btn dense flat icon="close" v-close-popup>
               <q-tooltip>Close</q-tooltip>
@@ -277,12 +252,106 @@
           </q-card-actions>
 
           <q-card-section align="center">
-            <div class="text-h6 ellipsis q-mt-sm">Notifications</div>
+            <div class="text-h5 ellipsis">Notifications</div>
           </q-card-section>
-
-          <q-separator inset />
-
           
+          <q-separator class="q-mb-sm" />
+
+          <q-scroll-area
+            style="
+              height: 250px;
+              border-right: 1px solid #ddd;
+            "
+          >
+            <q-list>
+              <q-item clickable>
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message (aaaa....) 3 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable>
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message (yyyyyy....) 2 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable>
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable>
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable>
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable>
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable>
+                <q-item-section>
+                  <q-item-label
+                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                  >
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-scroll-area>
+
+          <q-separator />
+          <q-card-section align="center">
+            <q-btn-toggle
+              v-model="notificationOptions"
+              push
+              toggle-color="primary"
+              :options="[
+                { value: 'one', slot: 'one' },
+                { value: 'two', slot: 'two' },
+              ]"
+            >
+              <template v-slot:one>
+                <div class="row items-center no-wrap">
+                  <q-icon left name="circle" color="green" />
+                  <div class="text-center">All notifications</div>
+                </div>
+              </template>
+
+              <template v-slot:two>
+                <div class="row items-center no-wrap">
+                  <q-icon
+                    left
+                    name="do_not_disturb_on_total_silence"
+                    color="yellow-10"
+                  />
+                  <div class="text-center">Only tagged message notificatons</div>
+                </div>
+              </template>
+            </q-btn-toggle>
+          </q-card-section>
         </q-card>
     </q-dialog>
   </q-layout>
@@ -370,12 +439,14 @@ export default {
     const state_pick = ref('online');
     const link = ref('');
     const notificationsDialog = ref(false);
+    const notificationOptions = ref('one');
 
     return {
       state_pick,
       link,
       channels,
       notificationsDialog,
+      notificationOptions,
 
       leftDrawerOpen,
       toggleLeftDrawer() {
