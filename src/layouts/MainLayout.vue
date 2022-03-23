@@ -124,6 +124,7 @@
           <q-item class="text-center">
             <q-item-section> Channels </q-item-section>
           </q-item>
+
           <q-separator color="black" inset />
 
           <template v-for="(channel, index) in channels" :key="index">
@@ -269,21 +270,19 @@
     </q-footer>
 
     <q-dialog v-model="notificationsDialog">
-        <q-card style="width: 700px; max-width: 80vw">
-          <q-card-actions align="right" class="q-mb-none">
-            <q-btn dense flat icon="close" v-close-popup>
-              <q-tooltip>Close</q-tooltip>
-            </q-btn>
-          </q-card-actions>
+      <q-card style="width: 700px; max-width: 80vw">
+        <q-card-actions align="right" class="q-mb-none">
+          <q-btn dense flat icon="close" v-close-popup>
+            <q-tooltip>Close</q-tooltip>
+          </q-btn>
+        </q-card-actions>
 
-          <q-card-section align="center">
-            <div class="text-h6 ellipsis q-mt-sm">Notifications</div>
-          </q-card-section>
+        <q-card-section align="center">
+          <div class="text-h6 ellipsis q-mt-sm">Notifications</div>
+        </q-card-section>
 
-          <q-separator inset />
-
-          
-        </q-card>
+        <q-separator inset />
+      </q-card>
     </q-dialog>
   </q-layout>
 </template>
