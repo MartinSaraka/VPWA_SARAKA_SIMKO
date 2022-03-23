@@ -353,7 +353,6 @@ export default {
     const link = ref('');
 
     return {
-      notification_options,
       state_pick,
       link,
       channels,
