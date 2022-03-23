@@ -94,8 +94,15 @@
 
     <q-drawer width=250 v-model="rightDrawerOpen" side="right" bordered>
 
-      <div align="center" class="text-h5 text-weight-bold q-py-md">
-        Zoznam členov
+      <div class="column items-center">
+        <q-btn class="q-mt-md" style="width: 80%" color="primary" icon="exit_to_app" label="Leave channel" />
+        <q-btn class="q-my-md" style="width: 80%" color="primary" icon="delete_forever" label="Delete channel" />
+      </div>
+
+      <q-separator inset />
+
+      <div align="center" class="text-h6 text-weight-bold q-py-sm">
+        Members
       </div>
 
       <q-separator inset />
