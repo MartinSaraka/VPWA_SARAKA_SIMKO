@@ -12,12 +12,11 @@
           Zoznam príkazov
         </q-toolbar-title>
 
-
-        <q-btn 
+        <q-btn
           class="q-mr-xl"
           color="blue "
-          label="Notificiations (+3)" 
-          icon="mail" 
+          label="Notificiations (+3)"
+          icon="mail"
           @click="notificationsDialog = true"
         />
         <q-btn
@@ -244,115 +243,110 @@
     </q-footer>
 
     <q-dialog v-model="notificationsDialog">
-        <q-card style="width: 700px; max-width: 80vw;">
-          <q-card-actions align="right" class="q-mb-none">
-            <q-btn dense flat icon="close" v-close-popup>
-              <q-tooltip>Close</q-tooltip>
-            </q-btn>
-          </q-card-actions>
+      <q-card style="width: 700px; max-width: 80vw">
+        <q-card-actions align="right" class="q-mb-none">
+          <q-btn dense flat icon="close" v-close-popup>
+            <q-tooltip>Close</q-tooltip>
+          </q-btn>
+        </q-card-actions>
 
-          <q-card-section align="center">
-            <div class="text-h5 ellipsis">Notifications</div>
-          </q-card-section>
-          
-          <q-separator class="q-mb-sm" />
+        <q-card-section align="center">
+          <div class="text-h5 ellipsis">Notifications</div>
+        </q-card-section>
 
-          <q-scroll-area
-            style="
-              height: 250px;
-              border-right: 1px solid #ddd;
-            "
+        <q-separator class="q-mb-sm" />
+
+        <q-scroll-area style="height: 250px; border-right: 1px solid #ddd">
+          <q-list>
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message (aaaa....) 3 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message (yyyyyy....) 2 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label
+                  >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
+                >
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-scroll-area>
+
+        <q-separator />
+        <q-card-section align="center">
+          <q-btn-toggle
+            v-model="notificationOptions"
+            push
+            toggle-color="primary"
+            :options="[
+              { value: 'one', slot: 'one' },
+              { value: 'two', slot: 'two' },
+            ]"
           >
-            <q-list>
-              <q-item clickable>
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message (aaaa....) 3 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
+            <template v-slot:one>
+              <div class="row items-center no-wrap">
+                <q-icon left name="circle" color="green" />
+                <div class="text-center">All notifications</div>
+              </div>
+            </template>
 
-              <q-item clickable>
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message (yyyyyy....) 2 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable>
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable>
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable>
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable>
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable>
-                <q-item-section>
-                  <q-item-label
-                    >Majka sent u message (xxxxx....) 1 mins ago</q-item-label
-                  >
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-scroll-area>
-
-          <q-separator />
-          <q-card-section align="center">
-            <q-btn-toggle
-              v-model="notificationOptions"
-              push
-              toggle-color="primary"
-              :options="[
-                { value: 'one', slot: 'one' },
-                { value: 'two', slot: 'two' },
-              ]"
-            >
-              <template v-slot:one>
-                <div class="row items-center no-wrap">
-                  <q-icon left name="circle" color="green" />
-                  <div class="text-center">All notifications</div>
-                </div>
-              </template>
-
-              <template v-slot:two>
-                <div class="row items-center no-wrap">
-                  <q-icon
-                    left
-                    name="do_not_disturb_on_total_silence"
-                    color="yellow-10"
-                  />
-                  <div class="text-center">Only tagged message notificatons</div>
-                </div>
-              </template>
-            </q-btn-toggle>
-          </q-card-section>
-        </q-card>
+            <template v-slot:two>
+              <div class="row items-center no-wrap">
+                <q-icon
+                  left
+                  name="do_not_disturb_on_total_silence"
+                  color="yellow-10"
+                />
+                <div class="text-center">Only tagged message notificatons</div>
+              </div>
+            </template>
+          </q-btn-toggle>
+        </q-card-section>
+      </q-card>
     </q-dialog>
   </q-layout>
 </template>

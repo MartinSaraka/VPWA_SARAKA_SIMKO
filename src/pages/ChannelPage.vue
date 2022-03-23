@@ -1,6 +1,14 @@
 <template>
   <div class="q-pa-md q-mt-sm row justify-center">
     <div style="width: 95%">
+      <q-chat-message
+        name="Martin"
+        avatar="https://cdn.quasar.dev/img/avatar4.jpg"
+        bg-color="red"
+      >
+        <div>@Jakub tagnuta sprava je červená</div>
+      </q-chat-message>
+
       <message-component
         v-for="(message, index) in messages"
         :key="index"
@@ -10,14 +18,6 @@
         :text="message.text"
         :stamp="message.stamp"
       />
-
-      <q-chat-message
-        name="Martin"
-        avatar="https://cdn.quasar.dev/img/avatar4.jpg"
-        bg-color="red"
-      >
-        <div>@Jakub tagnuta sprava je červená</div>
-      </q-chat-message>
 
       <q-chat-message
         name="Martin"
