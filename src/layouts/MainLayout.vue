@@ -92,21 +92,69 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-drawer v-model="rightDrawerOpen" side="right" bordered>
-      <q-card-section align="center">
-        <div class="text-h5 text-weight-bold">Zoznam používateľov</div>
-      </q-card-section>
+    <q-drawer width=250 v-model="rightDrawerOpen" side="right" bordered>
+
+      <div align="center" class="text-h5 text-weight-bold q-py-md">
+        Zoznam členov
+      </div>
 
       <q-separator inset />
 
-      <q-item clickable v-ripple>
-        <q-item-section avatar>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-          </q-avatar>
-        </q-item-section>
-        <q-item-section>Martin</q-item-section>
-      </q-item>
+      <q-list class="q-pb-xl">
+        <q-item clickable v-ripple class="q-mt-sm q-pl-lg text-center">
+          <q-item-section avatar>
+            <q-avatar rounded>
+              <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
+              <q-badge floating rounded color="green" />
+            </q-avatar>
+          </q-item-section>
+          <q-item-section class="text-center text-subtitle1">Jakub</q-item-section>
+          <q-item-section avatar>
+            <q-icon name="admin_panel_settings" class="text-primary vertical-middle text-center	" size="md" />
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple class="q-mt-sm q-pl-lg text-center">
+          <q-item-section avatar>
+            <q-avatar rounded>
+              <img src="https://cdn.quasar.dev/img/avatar4.jpg" />
+              <q-badge floating rounded color="grey-6" />
+            </q-avatar>
+          </q-item-section>
+          <q-item-section class="text-center text-subtitle1">Martin</q-item-section>
+          <q-item-section avatar>
+            <q-icon name="account_circle" class="text-primary vertical-middle text-center	" size="md" />
+          </q-item-section>
+        </q-item>
+
+        <q-item v-for="index in 10" :key="index" clickable v-ripple class="q-mt-sm q-pl-lg text-center">
+          <q-item-section avatar>
+            <q-avatar rounded>
+              <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
+              <q-badge floating rounded color="yellow-10" />
+            </q-avatar>
+          </q-item-section>
+          <q-item-section class="text-center text-subtitle1">Radka</q-item-section>
+          <q-item-section avatar>
+            <q-icon name="account_circle" class="text-primary vertical-middle text-center	" size="md" />
+          </q-item-section>
+        </q-item>
+
+      </q-list>
+
+      <div class="bg-white absolute-bottom">
+        <q-separator inset />
+
+        <div class="row justify-center">
+          <q-chip size="lg" icon="admin_panel_settings" text-color="primary" color="white">
+            Admin
+          </q-chip>
+
+          <q-chip size="lg" icon="account_circle" text-color="primary" color="white">
+            User
+          </q-chip>
+        </div>
+      </div>
     </q-drawer>
 
     <q-page-container>
