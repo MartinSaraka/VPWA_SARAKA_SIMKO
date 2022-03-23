@@ -82,8 +82,6 @@
             <q-item>
               <q-btn color="white" text-color="primary" label="Logout" />
             </q-item>
-
-            <q-item> </q-item>
           </q-list>
         </div>
       </q-img>
@@ -95,21 +93,24 @@
         "
       >
         <q-list>
-          <q-item class="text-center">
-            <q-item-section> Channels </q-item-section>
-            <q-separator></q-separator>
-          </q-item>
           <q-item>
             <q-item-section
               ><q-btn
-                class=" "
                 color="blue "
                 label="Create channel"
                 icon="create"
                 @click="notificationsDialog1 = true"
-              /> </q-item-section
-          ></q-item>
-          <q-separator color="black" inset />
+              />
+            </q-item-section>
+          </q-item>
+
+          <q-separator inset />
+
+          <q-item class="text-center">
+            <q-item-section> Channels </q-item-section>
+          </q-item>
+
+          <q-separator inset />
 
           <template v-for="(channel, index) in channels" :key="index">
             <q-item
