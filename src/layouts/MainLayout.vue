@@ -267,6 +267,24 @@
     <q-footer>
       <MessageInputField> </MessageInputField>
     </q-footer>
+
+    <q-dialog v-model="notificationsDialog">
+        <q-card style="width: 700px; max-width: 80vw">
+          <q-card-actions align="right" class="q-mb-none">
+            <q-btn dense flat icon="close" v-close-popup>
+              <q-tooltip>Close</q-tooltip>
+            </q-btn>
+          </q-card-actions>
+
+          <q-card-section align="center">
+            <div class="text-h6 ellipsis q-mt-sm">Notifications</div>
+          </q-card-section>
+
+          <q-separator inset />
+
+          
+        </q-card>
+    </q-dialog>
   </q-layout>
 </template>
 
@@ -351,11 +369,13 @@ export default {
     const rightDrawerOpen = ref(false);
     const state_pick = ref('online');
     const link = ref('');
+    const notificationsDialog = ref(false);
 
     return {
       state_pick,
       link,
       channels,
+      notificationsDialog,
 
       leftDrawerOpen,
       toggleLeftDrawer() {
