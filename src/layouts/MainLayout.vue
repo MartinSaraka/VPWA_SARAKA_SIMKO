@@ -372,7 +372,6 @@ export default {
     const notificationsDialog = ref(false);
 
     return {
-      notification_options,
       state_pick,
       link,
       channels,
