@@ -10,6 +10,25 @@
         :text="message.text"
         :stamp="message.stamp"
       />
+
+      <q-chat-message
+        name="Martin"
+        avatar="https://cdn.quasar.dev/img/avatar4.jpg"
+        bg-color="red"
+      >
+        <div>@Jakub tagnuta sprava je červená</div>
+      </q-chat-message>
+
+      <q-chat-message
+        name="Martin"
+        avatar="https://cdn.quasar.dev/img/avatar4.jpg"
+        bg-color="amber"
+      >
+        <div>
+          Martin is typing
+          <q-spinner-dots class="q-ml-sm" size="2rem" />
+        </div>
+      </q-chat-message>
     </div>
   </div>
 </template>
