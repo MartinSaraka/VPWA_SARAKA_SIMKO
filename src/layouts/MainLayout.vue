@@ -12,7 +12,7 @@
           Zoznam príkazov
         </q-toolbar-title>
 
-        <q-btn-dropdown 
+        <q-btn-dropdown
           class="q-mr-xl"
           color="blue "
           label="Notificiations(+3)"
@@ -44,57 +44,82 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
- 
-        <q-btn round color="white" text-color="primary" icon="group" @click="toggleRightDrawer" />
+
+        <q-btn
+          round
+          color="white"
+          text-color="primary"
+          icon="group"
+          @click="toggleRightDrawer"
+        />
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left">
-      <q-img class="absolute-top bg-blue" src="https://cdn.quasar.dev/img/material.png" style="height: 200px">
+      <q-img
+        class="absolute-top bg-blue"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 200px"
+      >
         <div class="absolute-top bg-transparent column items-center">
           <div class="column items-center">
             <q-avatar rounded size="48px">
               <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
-              <q-badge v-if="state_pick === 'online'" floating rounded color="green" />
-              <q-badge v-if="state_pick === 'dnd'" floating rounded color="yellow-10" />
-              <q-badge v-if="state_pick === 'offline'" floating rounded color="grey-6" />
-
+              <q-badge
+                v-if="state_pick === 'online'"
+                floating
+                rounded
+                color="green"
+              />
+              <q-badge
+                v-if="state_pick === 'dnd'"
+                floating
+                rounded
+                color="yellow-10"
+              />
+              <q-badge
+                v-if="state_pick === 'offline'"
+                floating
+                rounded
+                color="grey-6"
+              />
             </q-avatar>
             <div class="text-h6 ellipsis">Jakub</div>
           </div>
 
           <q-list class="column items-center">
             <q-item>
-                <q-btn-toggle
-                  v-model="state_pick"
-                  push
-                  glossy
-                  color="white"
-                  text-color="primary"
-
-                  toggle-color="primary"
-                  toggle-text-color="white"
-                  :options="[
-                    {label: 'Online', value: 'online'},
-                    {label: 'DND', value: 'dnd'},
-                    {label: 'Offline', value: 'offline'}
-                  ]"
-                />
+              <q-btn-toggle
+                v-model="state_pick"
+                push
+                glossy
+                color="white"
+                text-color="primary"
+                toggle-color="primary"
+                toggle-text-color="white"
+                :options="[
+                  { label: 'Online', value: 'online' },
+                  { label: 'DND', value: 'dnd' },
+                  { label: 'Offline', value: 'offline' },
+                ]"
+              />
             </q-item>
 
             <q-item>
-              <q-btn color="white" text-color="primary" label="Logout"/>
+              <q-btn color="white" text-color="primary" label="Logout" />
             </q-item>
-            
-            <q-item>
-            </q-item>
+
+            <q-item> </q-item>
           </q-list>
-
         </div>
-
-        
       </q-img>
-      <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
+      <q-scroll-area
+        style="
+          height: calc(100% - 200px);
+          margin-top: 200px;
+          border-right: 1px solid #ddd;
+        "
+      >
         <q-list>
           <q-item class="text-center">
             <q-item-section> Channels </q-item-section>
@@ -121,18 +146,27 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-drawer width=250 v-model="rightDrawerOpen" side="right" bordered>
-
+    <q-drawer width="250" v-model="rightDrawerOpen" side="right" bordered>
       <div class="column items-center">
-        <q-btn class="q-mt-md" style="width: 80%" color="primary" icon="exit_to_app" label="Leave channel" />
-        <q-btn class="q-my-md" style="width: 80%" color="primary" icon="delete_forever" label="Delete channel" />
+        <q-btn
+          class="q-mt-md"
+          style="width: 80%"
+          color="primary"
+          icon="exit_to_app"
+          label="Leave channel"
+        />
+        <q-btn
+          class="q-my-md"
+          style="width: 80%"
+          color="primary"
+          icon="delete_forever"
+          label="Delete channel"
+        />
       </div>
 
       <q-separator inset />
 
-      <div align="center" class="text-h6 text-weight-bold q-py-sm">
-        Members
-      </div>
+      <div align="center" class="text-h6 text-weight-bold q-py-sm">Members</div>
 
       <q-separator inset />
 
@@ -144,9 +178,15 @@
               <q-badge floating rounded color="green" />
             </q-avatar>
           </q-item-section>
-          <q-item-section class="text-center text-subtitle1">Jakub</q-item-section>
+          <q-item-section class="text-center text-subtitle1"
+            >Jakub</q-item-section
+          >
           <q-item-section avatar>
-            <q-icon name="admin_panel_settings" class="text-primary vertical-middle text-center	" size="md" />
+            <q-icon
+              name="admin_panel_settings"
+              class="text-primary vertical-middle text-center"
+              size="md"
+            />
           </q-item-section>
         </q-item>
 
@@ -157,36 +197,63 @@
               <q-badge floating rounded color="grey-6" />
             </q-avatar>
           </q-item-section>
-          <q-item-section class="text-center text-subtitle1">Martin</q-item-section>
+          <q-item-section class="text-center text-subtitle1"
+            >Martin</q-item-section
+          >
           <q-item-section avatar>
-            <q-icon name="account_circle" class="text-primary vertical-middle text-center	" size="md" />
+            <q-icon
+              name="account_circle"
+              class="text-primary vertical-middle text-center"
+              size="md"
+            />
           </q-item-section>
         </q-item>
 
-        <q-item v-for="index in 10" :key="index" clickable v-ripple class="q-mt-sm q-pl-lg text-center">
+        <q-item
+          v-for="index in 10"
+          :key="index"
+          clickable
+          v-ripple
+          class="q-mt-sm q-pl-lg text-center"
+        >
           <q-item-section avatar>
             <q-avatar rounded>
               <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
               <q-badge floating rounded color="yellow-10" />
             </q-avatar>
           </q-item-section>
-          <q-item-section class="text-center text-subtitle1">Radka</q-item-section>
+          <q-item-section class="text-center text-subtitle1"
+            >Radka</q-item-section
+          >
           <q-item-section avatar>
-            <q-icon name="account_circle" class="text-primary vertical-middle text-center	" size="md" />
+            <q-icon
+              name="account_circle"
+              class="text-primary vertical-middle text-center"
+              size="md"
+            />
           </q-item-section>
         </q-item>
-
       </q-list>
 
       <div class="bg-white absolute-bottom">
         <q-separator inset />
 
         <div class="row justify-center">
-          <q-chip size="lg" icon="admin_panel_settings" text-color="primary" color="white">
+          <q-chip
+            size="lg"
+            icon="admin_panel_settings"
+            text-color="primary"
+            color="white"
+          >
             Admin
           </q-chip>
 
-          <q-chip size="lg" icon="account_circle" text-color="primary" color="white">
+          <q-chip
+            size="lg"
+            icon="account_circle"
+            text-color="primary"
+            color="white"
+          >
             User
           </q-chip>
         </div>
@@ -305,6 +372,7 @@ export default {
     const notificationsDialog = ref(false);
 
     return {
+      notification_options,
       state_pick,
       link,
       channels,
