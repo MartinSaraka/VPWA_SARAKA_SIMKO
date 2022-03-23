@@ -14,7 +14,7 @@
 
         <div class="q-pa-md">
           <q-btn-dropdown
-            color="pink"
+            color="blue "
             label="Notificiations(+3)"
             dropdown-icon="change_history"
           >
@@ -148,6 +148,7 @@
             </template>
           </q-btn-toggle>
         </q-card-section>
+        <q-separator></q-separator>
         <q-card-section align="center"
           ><q-btn color="primary" label="Logout"
         /></q-card-section>
