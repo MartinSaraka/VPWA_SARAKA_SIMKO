@@ -352,7 +352,9 @@
                   name="do_not_disturb_on_total_silence"
                   color="yellow-10"
                 />
-                <div class="text-center">Only tagged message notificatons</div>
+                <div class="text-center">
+                  Only publicged message notificatons
+                </div>
               </div>
             </template>
           </q-btn-toggle>
@@ -421,71 +423,71 @@ import MessageInputField from '../components/MessageInputField.vue';
 
 const channels = [
   {
-    icon: 'tag',
+    icon: 'public ',
     name: 'General',
   },
   {
-    icon: 'tag',
+    icon: 'lock',
     name: 'VPWA channel',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'PAS channel',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 1',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 2',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 3',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 4',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 5',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 6',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 7',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 8',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 9',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 10',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 11',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 12',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 13',
   },
   {
-    icon: 'tag',
+    icon: 'public',
     name: 'test channel 14',
   },
 ];
