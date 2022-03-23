@@ -24,13 +24,19 @@
               <h2 class="text-h2 text-uppercase q-my-none text-weight-regular">
                 ICA
               </h2>
-              <h5>Innovative Communication App</h5>
             </div>
+            <h6
+              class="text-h6 q-my-none text-weight-regular flex justify-center"
+            >
+              Innovative Communication App
+            </h6>
           </div>
         </q-card-section>
         <q-card-section>
           <q-form class="q-gutter-md" @submit.prevent="submitForm">
+            <q-input label="Nickname" v-model="register.nickname"> </q-input>
             <q-input label="Username" v-model="register.username"> </q-input>
+            <q-input label="Surname" v-model="register.surname"> </q-input>
             <q-input label="Email" type="Email" v-model="register.email">
             </q-input>
             <q-input
@@ -68,7 +74,9 @@ export default {
   data() {
     return {
       register: {
+        nickname: '',
         username: '',
+        surname: '',
         email: '',
         password: '',
       },
@@ -77,7 +85,9 @@ export default {
   methods: {
     submitForm() {
       if (
+        !this.register.nickname ||
         !this.register.username ||
+        !this.register.surname ||
         !this.register.password ||
         !this.register.email
       ) {

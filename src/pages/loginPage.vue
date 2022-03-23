@@ -24,13 +24,18 @@
               <h2 class="text-h2 text-uppercase q-my-none text-weight-regular">
                 ICA
               </h2>
-              <h5>Innovative Communication App</h5>
             </div>
+            <h6
+              class="text-h6 q-my-none text-weight-regular flex justify-center"
+            >
+              Innovative Communication App
+            </h6>
           </div>
         </q-card-section>
         <q-card-section>
           <q-form class="q-gutter-md" @submit.prevent="submitForm">
-            <q-input label="Username" v-model="login.username"> </q-input>
+            <q-input label="Email" type="email" v-model="login.email">
+            </q-input>
             <q-input label="Password" type="password" v-model="login.password">
             </q-input>
             <div>
@@ -65,14 +70,14 @@ export default {
   data() {
     return {
       login: {
-        username: '',
+        email: '',
         password: '',
       },
     };
   },
   methods: {
     submitForm() {
-      if (!this.login.username || !this.login.password) {
+      if (!this.login.email || !this.login.password) {
         $q.notify({
           type: 'negative',
           message: 'Bad login',
