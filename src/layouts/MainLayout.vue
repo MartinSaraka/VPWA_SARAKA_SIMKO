@@ -59,6 +59,8 @@
             </q-avatar>
           </q-item-section>
         </q-item>
+ 
+        <q-btn round color="white" text-color="primary" icon="group" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
 
@@ -88,6 +90,23 @@
           </template>
         </q-list>
       </q-scroll-area>
+    </q-drawer>
+
+    <q-drawer v-model="rightDrawerOpen" side="right" bordered>
+      <q-card-section align="center">
+        <div class="text-h5 text-weight-bold">Zoznam používateľov</div>
+      </q-card-section>
+
+      <q-separator inset />
+
+      <q-item clickable v-ripple>
+        <q-item-section avatar>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+          </q-avatar>
+        </q-item-section>
+        <q-item-section>Martin</q-item-section>
+      </q-item>
     </q-drawer>
 
     <q-page-container>
@@ -238,6 +257,7 @@ const channels = [
 export default {
   setup() {
     const leftDrawerOpen = ref(false);
+    const rightDrawerOpen = ref(false);
     const profile = ref(false);
     const state_pick = ref('three');
     const link = ref('');
@@ -247,9 +267,15 @@ export default {
       link,
       profile,
       channels,
+
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+
+      rightDrawerOpen,
+      toggleRightDrawer() {
+        rightDrawerOpen.value = !rightDrawerOpen.value;
       },
     };
   },
