@@ -59,8 +59,14 @@
             </q-avatar>
           </q-item-section>
         </q-item>
- 
-        <q-btn round color="white" text-color="primary" icon="group" @click="toggleRightDrawer" />
+
+        <q-btn
+          round
+          color="white"
+          text-color="primary"
+          icon="group"
+          @click="toggleRightDrawer"
+        />
       </q-toolbar>
     </q-header>
 
@@ -168,6 +174,36 @@
           </q-btn-toggle>
         </q-card-section>
         <q-separator></q-separator>
+        <q-card-section align="center">
+          <q-btn-toggle
+            v-model="notification_options"
+            push
+            toggle-color="primary"
+            :options="[
+              { value: 'one', slot: 'one' },
+              { value: 'two', slot: 'two' },
+            ]"
+          >
+            <template v-slot:one>
+              <div class="row items-center no-wrap">
+                <q-icon left name="circle" color="green" />
+                <div class="text-center">All notifications</div>
+              </div>
+            </template>
+
+            <template v-slot:two>
+              <div class="row items-center no-wrap">
+                <q-icon
+                  left
+                  name="do_not_disturb_on_total_silence"
+                  color="yellow-10"
+                />
+                <div class="text-center">Only tagged message notificatons</div>
+              </div>
+            </template>
+          </q-btn-toggle>
+        </q-card-section>
+        <q-separator></q-separator>
         <q-card-section align="center"
           ><q-btn color="primary" label="Logout"
         /></q-card-section>
@@ -260,10 +296,12 @@ export default {
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
     const profile = ref(false);
-    const state_pick = ref('three');
+    const state_pick = ref('one');
+    const notification_options = ref('one');
     const link = ref('');
 
     return {
+      notification_options,
       state_pick,
       link,
       profile,
