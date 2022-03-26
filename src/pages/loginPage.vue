@@ -34,9 +34,14 @@
         </q-card-section>
         <q-card-section>
           <q-form class="q-gutter-md" @submit.prevent="submitForm">
-            <q-input label="Email" type="email" v-model="login.email">
-            </q-input>
-            <q-input label="Password" type="password" v-model="login.password">
+            <q-input label="Email" type="email" v-model="email"> </q-input>
+            <q-input
+              label="Password"
+              type="password"
+              lazy-rules
+              :rules="passwordRules"
+              v-model="password"
+            >
             </q-input>
             <div>
               <q-btn
@@ -64,40 +69,47 @@
 
 <script>
 import { useQuasar } from 'quasar';
-let $q;
+import { ref } from 'vue';
 export default {
-  name: 'loginPage',
-  data() {
+  setup() {
+    const $q = useQuasar();
+
+    const email = ref(null);
+    const emailRef = ref(null);
+
+    const password = ref(null);
+    const passwordRef = ref(null);
+
     return {
-      login: {
-        email: '',
-        password: '',
+      email,
+      emailRef,
+      emailRules: [(val) => (val && val.length > 0) || 'Please type something'],
+
+      password,
+      passwordRef,
+      passwordRules: [
+        (val) => (val !== null && val !== '') || 'Please type your password',
+        (val) => val.length >= 5 || 'Please use minimum 6 characters',
+      ],
+
+      onSubmit() {
+        emailRef.value.validate();
+        passwordRef.value.validate();
+
+        if (emailRef.value.hasError || passwordRef.value.hasError) {
+          $q.notify({
+            color: 'negative',
+            message: 'something wrong',
+          });
+        } else {
+          $q.notify({
+            icon: 'done',
+            color: 'positive',
+            message: 'Submitted',
+          });
+        }
       },
     };
-  },
-  methods: {
-    submitForm() {
-      if (!this.login.email || !this.login.password) {
-        $q.notify({
-          type: 'negative',
-          message: 'Bad login',
-        });
-      } else if (this.login.password.length < 6) {
-        $q.notify({
-          type: 'negative',
-          message: 'Password need to have at least 6 characters',
-        });
-      } else {
-        $q.notify({
-          icon: 'done',
-          color: 'positive',
-          message: 'Submitted',
-        });
-      }
-    },
-  },
-  mounted() {
-    $q = useQuasar();
   },
 };
 </script>
