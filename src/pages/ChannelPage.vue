@@ -12,8 +12,9 @@
           name="Martin"
           avatar="https://cdn.quasar.dev/img/avatar4.jpg"
           bg-color="red"
+          stamp="18.3.2022 at 12:00"
         >
-          <div>@Jakub tagnuta sprava je červená</div>
+          <div><strong>@Jakub</strong> tagnuta sprava je červená</div>
         </q-chat-message>
 
         <message-component
