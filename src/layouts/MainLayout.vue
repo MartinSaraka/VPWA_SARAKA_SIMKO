@@ -391,11 +391,10 @@
         </q-card-actions>
 
         <q-card-section align="center">
-          <div class="text-h5 ellipsis">Create ur own channel</div>
+          <div class="text-h5 ellipsis">Create your own channel</div>
         </q-card-section>
 
         <q-card-section align="center">
-          <p>type of channel</p>
           <q-btn-toggle
             v-model="notificationOptions1"
             push
@@ -407,18 +406,14 @@
           >
             <template v-slot:one>
               <div class="row items-center no-wrap">
-                <q-icon left name="circle" color="green" />
+                <q-icon left name="public" />
                 <div class="text-center">Public</div>
               </div>
             </template>
 
             <template v-slot:two>
               <div class="row items-center no-wrap">
-                <q-icon
-                  left
-                  name="do_not_disturb_on_total_silence"
-                  color="yellow-10"
-                />
+                <q-icon left name="lock" />
                 <div class="text-center">Private</div>
               </div>
             </template>
@@ -430,7 +425,13 @@
 
         <q-separator />
         <div class="flex justify-center q-pa-md">
-          <q-btn color="blue " label="Create channel" icon="create" rounded />
+          <q-btn
+            v-close-popup
+            color="blue "
+            label="Create channel"
+            icon="create"
+            rounded
+          />
         </div>
       </q-card>
     </q-dialog>
