@@ -12,14 +12,12 @@
           Zoznam príkazov
         </q-toolbar-title>
 
+        <q-btn class="q-mr-xl" color="blue" @click="notificationsDialog = true">
+          Notifications
+          <q-badge class="q-ml-sm" color="red" right>7</q-badge>
+        </q-btn>
         <q-btn
-          class="q-mr-xl"
-          color="blue "
-          label="Notificiations (+3)"
-          icon="mail"
-          @click="notificationsDialog = true"
-        />
-        <q-btn
+          class="q-mr-sm"
           round
           color="white"
           text-color="primary"
@@ -114,6 +112,25 @@
 
           <template v-for="(channel, index) in channels" :key="index">
             <q-item
+              v-if="channel.isTopped"
+              clickable
+              v-ripple
+              @click="invitedDialog = true"
+            >
+              <q-item-section avatar>
+                <q-icon color="red" :name="channel.icon" />
+              </q-item-section>
+
+              <q-item-section>
+                {{ channel.name }}
+              </q-item-section>
+              <q-badge class="q-mr-sm" align="middle" color="red">
+                INVITED
+              </q-badge>
+            </q-item>
+
+            <q-item
+              v-else
               clickable
               v-ripple
               :to="{ name: 'Channel', params: { id: index } }"
@@ -353,9 +370,7 @@
                   name="do_not_disturb_on_total_silence"
                   color="yellow-10"
                 />
-                <div class="text-center">
-                  Only publicged message notificatons
-                </div>
+                <div class="text-center">Only tagged messages notificatons</div>
               </div>
             </template>
           </q-btn-toggle>
@@ -372,11 +387,10 @@
         </q-card-actions>
 
         <q-card-section align="center">
-          <div class="text-h5 ellipsis">Create ur own channel</div>
+          <div class="text-h5 ellipsis">Create your own channel</div>
         </q-card-section>
 
         <q-card-section align="center">
-          <p>type of channel</p>
           <q-btn-toggle
             v-model="notificationOptions1"
             push
@@ -388,18 +402,14 @@
           >
             <template v-slot:one>
               <div class="row items-center no-wrap">
-                <q-icon left name="circle" color="green" />
+                <q-icon left name="public" />
                 <div class="text-center">Public</div>
               </div>
             </template>
 
             <template v-slot:two>
               <div class="row items-center no-wrap">
-                <q-icon
-                  left
-                  name="do_not_disturb_on_total_silence"
-                  color="yellow-10"
-                />
+                <q-icon left name="lock" />
                 <div class="text-center">Private</div>
               </div>
             </template>
@@ -411,8 +421,42 @@
 
         <q-separator />
         <div class="flex justify-center q-pa-md">
-          <q-btn color="blue " label="Create channel" icon="create" rounded />
+          <q-btn
+            v-close-popup
+            color="blue "
+            label="Create channel"
+            icon="create"
+            rounded
+          />
         </div>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="invitedDialog">
+      <q-card style="width: 700px; max-width: 80vw">
+        <q-card-actions align="right" class="q-mb-none">
+          <q-btn dense flat icon="close" v-close-popup>
+            <q-tooltip>Close</q-tooltip>
+          </q-btn>
+        </q-card-actions>
+
+        <q-card-section align="center">
+          <div class="q-mt-md text-h5 ellipsis">
+            You were invited to VPWA channel
+          </div>
+        </q-card-section>
+
+        <q-card-section>
+          <div class="q-mt-md q-mb-md row justify-evenly">
+            <q-btn
+              v-close-popup
+              color="primary"
+              icon="check_circle"
+              label="Accept"
+            />
+            <q-btn v-close-popup color="red" icon="cancel" label="Decline" />
+          </div>
+        </q-card-section>
       </q-card>
     </q-dialog>
   </q-layout>
@@ -424,72 +468,89 @@ import MessageInputField from '../components/MessageInputField.vue';
 
 const channels = [
   {
-    icon: 'public ',
-    name: 'General',
-  },
-  {
     icon: 'lock',
     name: 'VPWA channel',
+    isTopped: true,
+  },
+  {
+    icon: 'public ',
+    name: 'General',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'PAS channel',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 1',
+    isTopped: false,
   },
   {
-    icon: 'public',
+    icon: 'lock',
     name: 'test channel 2',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 3',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 4',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 5',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 6',
+    isTopped: false,
   },
   {
-    icon: 'public',
+    icon: 'lock',
     name: 'test channel 7',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 8',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 9',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 10',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 11',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 12',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 13',
+    isTopped: false,
   },
   {
     icon: 'public',
     name: 'test channel 14',
+    isTopped: false,
   },
 ];
 
@@ -504,6 +565,8 @@ export default {
     const notificationsDialog1 = ref(false);
     const notificationOptions1 = ref('one');
 
+    const invitedDialog = ref(false);
+
     return {
       state_pick,
       link,
@@ -512,6 +575,7 @@ export default {
       notificationOptions,
       notificationsDialog1,
       notificationOptions1,
+      invitedDialog,
 
       leftDrawerOpen,
       toggleLeftDrawer() {

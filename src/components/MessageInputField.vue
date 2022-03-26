@@ -87,14 +87,26 @@ export default defineComponent({
       rounded
       outlined
       dense
-      class="WAL__field col-grow q-mr-sm"
+      class="col-grow q-my-md q-my-sm"
       standout="bg-grey-3 text-white"
       v-model="inputText"
       placeholder="Type a message"
       @keyup.enter="handleMessage()"
     >
       <template v-slot:append>
-        <q-btn dense flat icon="send" @click="handleMessage()" />
+        <q-btn clas="q-ml-sm" dense flat icon="send" @click="handleMessage()" />
+      </template>
+
+      <template v-slot:prepend>
+        <q-btn
+          class="q-mr-sm"
+          flat
+          round
+          size="md"
+          color="primary"
+          icon="info"
+          to="/"
+        />
       </template>
     </q-input>
   </q-toolbar>
