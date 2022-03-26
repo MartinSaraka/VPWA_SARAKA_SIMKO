@@ -94,11 +94,19 @@ export default defineComponent({
       @keyup.enter="handleMessage()"
     >
       <template v-slot:append>
-        <q-btn dense flat icon="send" @click="handleMessage()" />
+        <q-btn clas="q-ml-sm" dense flat icon="send" @click="handleMessage()" />
       </template>
 
       <template v-slot:prepend>
-        <q-btn flat round size="md" color="primary" icon="info" to="/" />
+        <q-btn
+          class="q-mr-sm"
+          flat
+          round
+          size="md"
+          color="primary"
+          icon="info"
+          to="/"
+        />
       </template>
     </q-input>
   </q-toolbar>
