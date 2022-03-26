@@ -12,14 +12,12 @@
           Zoznam príkazov
         </q-toolbar-title>
 
+        <q-btn class="q-mr-xl" color="blue" @click="notificationsDialog = true">
+          Notifications
+          <q-badge class="q-ml-sm" color="red" right>7</q-badge>
+        </q-btn>
         <q-btn
-          class="q-mr-xl"
-          color="blue "
-          label="Notificiations (+3)"
-          icon="mail"
-          @click="notificationsDialog = true"
-        />
-        <q-btn
+          class="q-mr-sm"
           round
           color="white"
           text-color="primary"
@@ -372,9 +370,7 @@
                   name="do_not_disturb_on_total_silence"
                   color="yellow-10"
                 />
-                <div class="text-center">
-                  Only publicged message notificatons
-                </div>
+                <div class="text-center">Only tagged messages notificatons</div>
               </div>
             </template>
           </q-btn-toggle>
