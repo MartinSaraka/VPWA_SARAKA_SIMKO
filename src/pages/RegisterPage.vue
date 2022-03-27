@@ -33,16 +33,42 @@
           </div>
         </q-card-section>
         <q-card-section>
-          <q-form class="q-gutter-md" @submit.prevent="submitForm">
-            <q-input label="Nickname" v-model="register.nickname"> </q-input>
-            <q-input label="Username" v-model="register.username"> </q-input>
-            <q-input label="Surname" v-model="register.surname"> </q-input>
-            <q-input label="Email" type="Email" v-model="register.email">
+          <q-form class="q-gutter-md">
+            <q-input
+              label="Nickname"
+              lazy-rules
+              :rules="nicknameRules"
+              v-model="nickname"
+            >
+            </q-input>
+            <q-input
+              label="Username"
+              lazy-rules
+              :rules="usernameRules"
+              v-model="username"
+            >
+            </q-input>
+            <q-input
+              label="Surname"
+              lazy-rules
+              :rules="surnameRules"
+              v-model="surname"
+            >
+            </q-input>
+            <q-input
+              label="Email"
+              lazy-rules
+              :rules="emailRules"
+              type="Email"
+              v-model="email"
+            >
             </q-input>
             <q-input
               label="Password"
               type="password"
-              v-model="register.password"
+              lazy-rules
+              :rules="passwordRules"
+              v-model="password"
             >
             </q-input>
             <div>
@@ -68,45 +94,82 @@
 
 <script>
 import { useQuasar } from 'quasar';
-let $q;
+import { ref } from 'vue';
 export default {
-  name: 'RegisterPage',
-  data() {
+  setup() {
+    const $q = useQuasar();
+
+    const surname = ref(null);
+    const surnameRef = ref(null);
+    const nickname = ref(null);
+    const nicknameRef = ref(null);
+    const username = ref(null);
+    const usernameRef = ref(null);
+    const email = ref(null);
+    const emailRef = ref(null);
+    const password = ref(null);
+    const passwordRef = ref(null);
+
     return {
-      register: {
-        nickname: '',
-        username: '',
-        surname: '',
-        email: '',
-        password: '',
+      email,
+      emailRef,
+      emailRules: [(val) => (val && val.length > 0) || 'Please type something'],
+
+      password,
+      passwordRef,
+      passwordRules: [
+        (val) => (val !== null && val !== '') || 'Please type your password',
+        (val) => val.length >= 5 || 'Please use minimum 6 characters',
+      ],
+
+      nickname,
+      nicknameRef,
+      nicknameRules: [
+        (val) => (val !== null && val !== '') || 'Please type your nickname',
+        (val) => val.length >= 5 || 'Please use minimum 6 characters',
+      ],
+
+      username,
+      usernameRef,
+      usernameRules: [
+        (val) => (val !== null && val !== '') || 'Please type your username',
+        (val) => val.length >= 5 || 'Please use minimum 6 characters',
+      ],
+
+      surname,
+      surnameRef,
+      surnameRules: [
+        (val) => (val !== null && val !== '') || 'Please type your surname',
+        (val) => val.length >= 5 || 'Please use minimum 6 characters',
+      ],
+
+      onSubmit() {
+        emailRef.value.validate();
+        passwordRef.value.validate();
+        nicknameRef.value.validate();
+        usernameRef.value.validate();
+        surnameRef.value.validate();
+
+        if (
+          emailRef.value.hasError ||
+          passwordRef.value.hasError ||
+          nicknameRef.value.hasError ||
+          usernameRef.value.hasError ||
+          surnameRef.value.hasError
+        ) {
+          $q.notify({
+            color: 'negative',
+            message: 'something wrong',
+          });
+        } else {
+          $q.notify({
+            icon: 'done',
+            color: 'positive',
+            message: 'Submitted',
+          });
+        }
       },
     };
-  },
-  methods: {
-    submitForm() {
-      if (
-        !this.register.nickname ||
-        !this.register.username ||
-        !this.register.surname ||
-        !this.register.password ||
-        !this.register.email
-      ) {
-        $q.notify({
-          type: 'negative',
-          message: 'Bad login',
-        });
-      } else if (this.login.password.length < 6) {
-        $q.notify({
-          type: 'negative',
-          message: 'Password need to have at least 6 characters',
-        });
-      } else {
-        console.log('register');
-      }
-    },
-  },
-  mounted() {
-    $q = useQuasar();
   },
 };
 </script>

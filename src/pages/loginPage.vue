@@ -33,7 +33,7 @@
           </div>
         </q-card-section>
         <q-card-section>
-          <q-form class="q-gutter-md" @submit.prevent="submitForm">
+          <q-form class="q-gutter-md">
             <q-input label="Email" type="email" v-model="email"> </q-input>
             <q-input
               label="Password"
